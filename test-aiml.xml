@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <aiml version="2.0">
+    <category>
+        <pattern>HELLO</pattern>
+        <template>Hello!</template>
+    </category>
+    
     <category>
         <pattern>สวัสดี</pattern>
         <template>ดีจ้าาาาาา</template>
