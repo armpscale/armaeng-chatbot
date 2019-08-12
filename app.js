@@ -1,14 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-// const AIMLParser = require('aimlparser')
+const AIMLParser = require('aimlparser')
 
 const app = express()
 const port = process.env.PORT || 3000
-// const aimlParser = new AIMLParser({ name:'ArmAeng' })
+const aimlParser = new AIMLParser({ name:'ArmAeng' })
 require('dotenv').config()
 
-// aimlParser.load(['./test-aiml.xml'])
+aimlParser.load(['./test-aiml.xml'])
 
 /**
  * use middleware
@@ -36,10 +36,10 @@ app.post('/webhook', (req, res) => {
     // reply(reply_token)
     let msg = req.body.events[0].message.text
     reply(reply_token, msg)
-    // aimlParser.getResult(msg, (answer, wildCardArray, input) => {
-    //     console.log(answer)
-    //     reply(reply_token, answer)
-    // })
+    aimlParser.getResult(msg, (answer, wildCardArray, input) => {
+        console.log(answer)
+        reply(reply_token, answer)
+    })
     res.sendStatus(200)
 })
 
