@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="2.0">
+    <category>
+        <pattern>สวัสดี</pattern>
+        <template>ดีจ้าาาาาา</template>
+    </category>
+
+    <category>
+        <pattern>วันนี้วันอะไร</pattern>
+        <template>วันแม่แห่งชาติ</template>
+    </category>
+    
+    <category>
+      <pattern>เราชอบ *</pattern>
+      <template>เราก็ชอบ <star/> เหมือนกัน</template>
+    </category>
+
+    <category>
+      <pattern>ทำไง</pattern>
+      <template>ขอตังแม่</template>
+    </category>
+</aiml>

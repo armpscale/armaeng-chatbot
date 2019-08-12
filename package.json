@@ -10,7 +10,7 @@
   "author": "Akkrawut Khanthawan",
   "license": "ISC",
   "dependencies": {
-    "aimlinterpreter": "^0.1.7",
+    "aimlparser": "^1.0.5",
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
