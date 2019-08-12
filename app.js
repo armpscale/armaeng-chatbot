@@ -31,12 +31,19 @@ app.listen(process.env.PORT, () => {
 })
 
 app.post('/webhook', (req, res) => {
+    console.log(req.body)
     let reply_token = req.body.events[0].replyToken
     // reply(reply_token)
     let msg = req.body.events[0].message.text
     aimlParser.getResult(msg, (answer, wildCardArray, input) => {
+        console.log(answer)
         reply(reply_token, answer)
     })
+    res.sendStatus(200)
+})
+
+app.get('/', () => {
+    console.log("test")
     res.sendStatus(200)
 })
 
@@ -52,11 +59,13 @@ function reply(reply_token, msg) {
             text: msg
         }]
     })
+    console.log(body)
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
         headers: headers,
         body: body
     }, (err, res, body) => {
+        console.log(res.body)
         console.log('status = ' + res.statusCode);
     });
 }
