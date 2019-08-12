@@ -4,7 +4,7 @@ const request = require('request')
 const AIMLParser = require('aimlparser')
 
 const app = express()
-const port = process.env.CHANNEL_ACCESS_TOKEN || 3000
+const port = process.env.PORT || 3000
 const aimlParser = new AIMLParser({ name:'ArmAeng' })
 require('dotenv').config()
 
