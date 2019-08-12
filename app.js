@@ -1,14 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const AIMLParser = require('aimlparser')
+// const AIMLParser = require('aimlparser')
 
 const app = express()
 const port = process.env.PORT || 3000
-const aimlParser = new AIMLParser({ name:'ArmAeng' })
+// const aimlParser = new AIMLParser({ name:'ArmAeng' })
 require('dotenv').config()
 
-aimlParser.load(['./test-aiml.xml'])
+// aimlParser.load(['./test-aiml.xml'])
 
 /**
  * use middleware
@@ -36,15 +36,16 @@ app.post('/webhook', (req, res) => {
     // reply(reply_token)
     let msg = req.body.events[0].message.text
     reply(reply_token, msg)
-    aimlParser.getResult(msg, (answer, wildCardArray, input) => {
-        console.log(answer)
-        reply(reply_token, answer)
-    })
+    // aimlParser.getResult(msg, (answer, wildCardArray, input) => {
+    //     console.log(answer)
+    //     reply(reply_token, answer)
+    // })
     res.sendStatus(200)
 })
 
 function reply(reply_token, msg) {
     console.log("Message : " + msg)
+    message = patternReply(msg)
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + process.env.CHANNEL_ACCESS_TOKEN
@@ -53,7 +54,7 @@ function reply(reply_token, msg) {
         replyToken: reply_token,
         messages: [{
             type: 'text',
-            text: msg
+            text: message
         }]
     })
     console.log(body)
@@ -65,4 +66,28 @@ function reply(reply_token, msg) {
         console.log(res.body)
         console.log('status = ' + res.statusCode);
     });
+}
+
+function patternReply(msg) {
+    let message = ""
+    switch (msg) {
+        case "สวัสดี":
+            message = "ดีจ้าาาาา"
+            break;
+        case "Hello":
+            message = "Hello!"
+            break;
+        case "วันนี้วันอะไร":
+            message = "วันแม่ไงงง"
+            break;
+        case "เราชอบเธอนะ":
+            message = "เราก็ชอบเธอเหมือนกัน"
+            break;
+        case "ทำไง":
+            message = "ขอตังแม่"
+            break;
+        default:
+            message = "คิคิ"
+    }
+    return message
 }
