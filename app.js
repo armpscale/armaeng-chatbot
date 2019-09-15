@@ -50,13 +50,22 @@ function reply(reply_token, msg) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + process.env.CHANNEL_ACCESS_TOKEN
     }
-    let body = JSON.stringify({
-        replyToken: reply_token,
-        messages: [{
-            type: 'text',
-            text: message
-        }]
-    })
+    let body
+    if (msg === "FlexBubble") {
+        body = JSON.stringify({
+            replyToken: reply_token,
+            messages: [message]
+        })
+    } else {
+        body = JSON.stringify({
+            replyToken: reply_token,
+            messages: [{
+                type: 'text',
+                text: message
+            }]
+        })
+    }
+    
     console.log(body)
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
