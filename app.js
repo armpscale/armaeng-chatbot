@@ -4,6 +4,8 @@ const request = require('request')
 // const AIMLParser = require('aimlparser')
 
 const flexBubble = require("./flex-bubble")
+const flexCarousel = require("./flex-carousel")
+const flexBlock = require("./flex-block")
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -60,6 +62,24 @@ function reply(reply_token, msg) {
                 "type": "flex",
                 "altText": "Flex message : Bubble",
                 "contents": flexBubble
+            }]
+        })
+    } else if (msg === "FlexCarousel") {
+        body = JSON.stringify({
+            replyToken: reply_token,
+            messages: [{
+                "type": "flex",
+                "altText": "Flex message : Carousel",
+                "contents": flexCarousel
+            }]
+        })
+    } else if (msg === "FlexBlock") {
+        body = JSON.stringify({
+            replyToken: reply_token,
+            messages: [{
+                "type": "flex",
+                "altText": "Flex message : Block",
+                "contents": flexBlock
             }]
         })
     } else {
