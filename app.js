@@ -54,7 +54,11 @@ function reply(reply_token, msg) {
     if (msg === "FlexBubble") {
         body = JSON.stringify({
             replyToken: reply_token,
-            messages: [message]
+            messages: [{
+                "type": "flex",
+                "altText": "This is a Flex message",
+                "contents": message
+            }]
         })
     } else {
         body = JSON.stringify({
@@ -65,7 +69,7 @@ function reply(reply_token, msg) {
             }]
         })
     }
-    
+
     console.log(body)
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
