@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 // const AIMLParser = require('aimlparser')
 
-import flexBubble from "./flex-bubble"
+const flexBubble = require("./flex-bubble")
 
 const app = express()
 const port = process.env.PORT || 3000
