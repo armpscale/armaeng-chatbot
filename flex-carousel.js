@@ -1,4 +1,4 @@
-export default
-{
-  // my json here...
-}
+module.exports =
+    {
+        // my json here...
+    }
