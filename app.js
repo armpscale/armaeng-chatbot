@@ -77,14 +77,31 @@ function patternReply(msg) {
         case "Hello":
             message = "Hello!"
             break;
-        case "วันนี้วันอะไร":
-            message = "วันแม่ไงงง"
-            break;
         case "เราชอบเธอนะ":
             message = "เราก็ชอบเธอเหมือนกัน"
             break;
-        case "ทำไง":
-            message = "ขอตังแม่"
+        case "FlexBubble":
+            message = {
+                "type": "bubble",
+                "direction": "ltr",
+                "styles": {
+                    "header": {
+                        "backgroundColor": "#ffaaaa",
+                    },
+                    "body": {
+                        "backgroundColor": "#aaffaa",
+                        "separator": true,
+                        "separatorColor": "#efefef"
+                    },
+                    "footer": {
+                        "backgroundColor": "#aaaaff"
+                    }
+                },
+                "header": {},
+                "hero": {},
+                "body": {},
+                "footer": {}
+            }
             break;
         default:
             message = "คิคิ"
