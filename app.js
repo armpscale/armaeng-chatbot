@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const request = require('request')
 // const AIMLParser = require('aimlparser')
 
+import flexBubble from "./flex-bubble"
+
 const app = express()
 const port = process.env.PORT || 3000
 // const aimlParser = new AIMLParser({ name:'ArmAeng' })
@@ -56,8 +58,8 @@ function reply(reply_token, msg) {
             replyToken: reply_token,
             messages: [{
                 "type": "flex",
-                "altText": "This is a Flex message",
-                "contents": message
+                "altText": "Flex message : Bubble",
+                "contents": flexBubble
             }]
         })
     } else {
@@ -92,29 +94,6 @@ function patternReply(msg) {
             break;
         case "เราชอบเธอนะ":
             message = "เราก็ชอบเธอเหมือนกัน"
-            break;
-        case "FlexBubble":
-            message = {
-                "type": "bubble",
-                "direction": "ltr",
-                "styles": {
-                    "header": {
-                        "backgroundColor": "#ffaaaa",
-                    },
-                    "body": {
-                        "backgroundColor": "#aaffaa",
-                        "separator": true,
-                        "separatorColor": "#efefef"
-                    },
-                    "footer": {
-                        "backgroundColor": "#aaaaff"
-                    }
-                },
-                "header": {},
-                "hero": {},
-                "body": {},
-                "footer": {}
-            }
             break;
         default:
             message = "คิคิ"
