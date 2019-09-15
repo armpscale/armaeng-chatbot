@@ -1,6 +1,20 @@
 module.exports =
     {
         "type": "bubble",
+        "direction": "ltr",
+        "styles": {
+            "header": {
+                "backgroundColor": "#ffaaaa"
+            },
+            "body": {
+                "backgroundColor": "#aaffaa",
+                "separator": true,
+                "separatorColor": "#efefef"
+            },
+            "footer": {
+                "backgroundColor": "#aaaaff"
+            }
+        },
         "header": {
             "type": "box",
             "layout": "vertical",
